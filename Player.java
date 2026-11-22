@@ -34,6 +34,10 @@ public class Player {
         return gold;
     }
 
+    public int getMaxHp() {
+        return maxHp;
+    }
+
     // sistem kombat
     public void attack(Enemy enemy) {
         System.out.println(name + "nyerang" + enemy.getName() + " dan nge damage " + attackPower);
