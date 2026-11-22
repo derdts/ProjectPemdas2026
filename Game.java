@@ -6,81 +6,81 @@ public class Game {
         String input;
         boolean shopping;
 
-        // ===== Membuat player =====
-        System.out.println("==========================================");
-        System.out.println("   DEADLINE SURVIVOR: EDISI FILKOM");
-        System.out.println("==========================================");
-        System.out.print("Masukkan nama kamu, maba: ");
-        String name = scanner.nextLine().trim();
-        if (name.isEmpty()) {
-            name = "Maba";
-        }
+        // bikin player
+        System.out.println("Tahun ini kamu udah jadi mahasiswa baru");
+        System.out.print("Siapa nama mu??? ");
+        String nama = scanner.nextLine();
+        Player pemain = new Player(nama, 30, 5, 2);
 
-        // nama, Mental (HP), Skill Ngoding (attack), jumlah Es Teh Jumbo
-        Player player = new Player(name, 30, 5, 2);
-
-        // ===== Musuh chapter 1 =====
-        // nama, Mental/HP, attack, hadiah saldo
+        // bikin musuh
         Enemy tugasOspek = new Enemy("Tugas Ospek", 10, 3, 20);
-        Enemy laporanPraktikum = new Enemy("Laporan Praktikum Bab 1", 15, 4, 30);
-        Enemy liveCoding = new Enemy("Live Coding Praktikum", 30, 6, 0);
+        Enemy laporanPraktikum = new Enemy("Live Koding Looping", 15, 4, 30);
+        Enemy liveCoding = new Enemy("U A P😈", 30, 6, 0);
 
-        // ===== Item kantin =====
-        // nama, harga, +skill, +max mental, +es teh, deskripsi
+        // bikin item
         Item[] shopItems = {
-            new Item("Kopi Susu Gula Aren", 25, 3, 0, 0, "+3 Skill Ngoding"),
-            new Item("Nasi Padang Porsi Kuli", 20, 0, 10, 0, "+10 max Mental"),
+            new Item("Americano", 25, 3, 0, 0, "+3 Skill Ngoding"),
+            new Item("Nasi Padang", 20, 0, 10, 0, "+10 max Mental"),
             new Item("Es Teh Jumbo", 10, 0, 0, 1, "+1 Es Teh Jumbo")
         };
 
-        // Teks game over dipakai di beberapa tempat
-        String gameOverText = "\nMental kamu habis. Kamu ketiduran di depan laptop dan kebangun jam 00.01.\n"
+        // text kalo kalah
+        String textGameOver = "\nMental kamu habis. Kamu ketiduran di depan laptop dan kebangun jam 00.01.\n"
                 + "Deadline lewat. Tombol submit udah abu-abu.\n"
-                + "===== STATUS: MENTAL BREAKDOWN =====\n"
-                + "Skill issue? Bukan. Cuma kurang Es Teh. Coba lagi, bestie.";
+                + "===== STATUS: SKILL ISSUE Wlee =====\n"
+                + "Cuma kurang Es Teh. Coba lagi nub";
 
         System.out.println("\n===== CHAPTER 1: MABA ERA, LANGSUNG DIHAJAR =====");
 
-        // =====================================================
-        // BAGIAN 1: TUGAS OSPEK
-        // =====================================================
-        System.out.println("\nSelamat datang di Fakultas Ilmu Komputer, bestie.");
-        System.out.println("Kamu resmi jadi maba Teknik Informatika. Ekspektasi: ngoding santuy, hidup estetik.");
-        System.out.println("Realita: kuliah aja belum mulai, grup ospek udah 99+ notif.");
-        System.out.println("\"Dek, tugas ospek dikumpul besok jam 06.00 ya. Telat = push up.\"");
-        System.out.println("Isinya: name tag dari kardus, video perkenalan, esai 1000 kata");
-        System.out.println("'Kenapa Aku Memilih FILKOM', plus tanda tangan 30 kating.");
-        System.out.println("TUGAS OSPEK muncul! Kecil-kecil cabe rawit.");
-        System.out.println("\n>>> VS TUGAS OSPEK <<<");
+        
+        System.out.println("\nSelamat datang di FILKOM wahai, " + pemain.getName());
+        System.out.println("Kamu sekarang udah resmi jadi maba Teknik Informatika");
+        System.out.println("sekarang lagi masa ospek, kamu lagi doomscrolling tiba tiba...");
+        System.out.println("kamu dapat notif dari mentor mu" + "\"ayo yang belum submit penugasan segera ya, terakhir hari ini\"");
+        System.out.println("tugas nya: bikin twibbon pakai template yang udah di kasih");
+        System.out.println("'okeh ez nih'");
 
-        while (player.isAlive() && tugasOspek.isAlive()) {
-            System.out.println();
-            player.showStatus();
+        System.out.println("\n>>> VS TUGAS TWIBBON <<<");
+
+        int giliran1 = 1;
+        while (pemain.isAlive() && tugasOspek.isAlive()) {
+
+            pemain.showStatus();
+
             tugasOspek.showStatus();
-            System.out.println("1. Ngoding brutal (serang)");
-            System.out.println("2. Sedot Es Teh Jumbo (+10 Mental)");
-            System.out.print("Pilih aksi: ");
-            input = scanner.nextLine().trim();
 
-            if (input.equals("1")) {
-                player.attack(tugasOspek);
-            } else if (input.equals("2")) {
-                if (!player.drinkPotion()) {
-                    System.out.println("Es Teh abis, bestie! Pilih aksi lain.");
-                    continue;
+            if (giliran1 == 1) {
+                System.out.println("1. cari foto yang estetik");
+                System.out.println("1. buka canva dan ");
+                System.out.println("2. Minum Es Teh Jumbo");
+                System.out.print("Pilih aksi: ");
+                input = scanner.nextLine().trim();
+
+                if (input.equals("1")) {
+
+                    pemain.attack(tugasOspek);
+
+                } else if (input.equals("2")) {
+
+                    if (!pemain.drinkPotion()) {
+                        System.out.println("Es Teh abis, bestie! Pilih aksi lain.");
+                        continue;
+                    }
+
                 }
-            } else {
-                System.out.println("Typo ya? Ketik 1 atau 2.");
-                continue;
+
+                if (tugasOspek.isAlive()) {
+                    tugasOspek.attack(pemain);
+                }
+            } else if (giliran1 == 2) {
+
             }
 
-            if (tugasOspek.isAlive()) {
-                tugasOspek.attack(player);
-            }
+
         }
 
-        if (!player.isAlive()) {
-            System.out.println(gameOverText);
+        if (!pemain.isAlive()) {
+            System.out.println(textGameOver);
             scanner.close();
             return;
         }
@@ -88,7 +88,7 @@ public class Game {
         System.out.println("\nTugas Ospek KELAR!");
         System.out.println("Name tag kardus jadi, esai kelar, tanda tangan kating lengkap 30.");
         System.out.println("Kating yang galak pas ospek ternyata baik, kamu ditraktir.");
-        player.addGold(tugasOspek.getGoldReward());
+        pemain.addGold(tugasOspek.getGoldReward());
         System.out.println("Saldo +" + tugasOspek.getGoldReward());
 
         // ===== KANTIN 1 =====
@@ -97,7 +97,7 @@ public class Game {
         shopping = true;
         while (shopping) {
             System.out.println("\n========== KANTIN ==========");
-            player.showStatus();
+            pemain.showStatus();
             for (int j = 0; j < shopItems.length; j++) {
                 System.out.println((j + 1) + ". " + shopItems[j].getName() + " - "
                         + shopItems[j].getPrice() + " saldo (" + shopItems[j].getDescription() + ")");
@@ -120,7 +120,7 @@ public class Game {
 
             if (chosen == null) {
                 System.out.println("Menu itu ga ada, bestie.");
-            } else if (player.buyItem(chosen)) {
+            } else if (pemain.buyItem(chosen)) {
                 System.out.println("Kamu beli " + chosen.getName() + ". Healing dikit lah.");
             } else {
                 System.out.println("Saldo kamu ga cukup. Akhir bulan vibes.");
@@ -137,9 +137,9 @@ public class Game {
         System.out.println("LAPORAN PRAKTIKUM BAB 1 muncul! Auranya nyebelin parah.");
         System.out.println("\n>>> VS LAPORAN PRAKTIKUM BAB 1 <<<");
 
-        while (player.isAlive() && laporanPraktikum.isAlive()) {
+        while (pemain.isAlive() && laporanPraktikum.isAlive()) {
             System.out.println();
-            player.showStatus();
+            pemain.showStatus();
             laporanPraktikum.showStatus();
             System.out.println("1. Ngoding brutal (serang)");
             System.out.println("2. Sedot Es Teh Jumbo (+10 Mental)");
@@ -147,9 +147,9 @@ public class Game {
             input = scanner.nextLine().trim();
 
             if (input.equals("1")) {
-                player.attack(laporanPraktikum);
+                pemain.attack(laporanPraktikum);
             } else if (input.equals("2")) {
-                if (!player.drinkPotion()) {
+                if (!pemain.drinkPotion()) {
                     System.out.println("Es Teh abis, bestie! Pilih aksi lain.");
                     continue;
                 }
@@ -159,12 +159,12 @@ public class Game {
             }
 
             if (laporanPraktikum.isAlive()) {
-                laporanPraktikum.attack(player);
+                laporanPraktikum.attack(pemain);
             }
         }
 
-        if (!player.isAlive()) {
-            System.out.println(gameOverText);
+        if (!pemain.isAlive()) {
+            System.out.println(textGameOver);
             scanner.close();
             return;
         }
@@ -172,7 +172,7 @@ public class Game {
         System.out.println("\nLaporan Praktikum Bab 1 KELAR!");
         System.out.println("Submit jam 23.57. Literally 2 menit sebelum deadline. Jantung? Udah ga aman.");
         System.out.println("Tapi menang tetep menang, no debat. Ortu transfer uang jajan.");
-        player.addGold(laporanPraktikum.getGoldReward());
+        pemain.addGold(laporanPraktikum.getGoldReward());
         System.out.println("Saldo +" + laporanPraktikum.getGoldReward());
 
         // ===== KANTIN 2 =====
@@ -181,7 +181,7 @@ public class Game {
         shopping = true;
         while (shopping) {
             System.out.println("\n========== KANTIN ==========");
-            player.showStatus();
+            pemain.showStatus();
             for (int j = 0; j < shopItems.length; j++) {
                 System.out.println((j + 1) + ". " + shopItems[j].getName() + " - "
                         + shopItems[j].getPrice() + " saldo (" + shopItems[j].getDescription() + ")");
@@ -204,7 +204,7 @@ public class Game {
 
             if (chosen == null) {
                 System.out.println("Menu itu ga ada, bestie.");
-            } else if (player.buyItem(chosen)) {
+            } else if (pemain.buyItem(chosen)) {
                 System.out.println("Kamu beli " + chosen.getName() + ". Healing dikit lah.");
             } else {
                 System.out.println("Saldo kamu ga cukup. Akhir bulan vibes.");
@@ -221,9 +221,9 @@ public class Game {
         System.out.println("BOSS MUNCUL: LIVE CODING PRAKTIKUM!");
         System.out.println("\n>>> VS LIVE CODING PRAKTIKUM <<<");
 
-        while (player.isAlive() && liveCoding.isAlive()) {
+        while (pemain.isAlive() && liveCoding.isAlive()) {
             System.out.println();
-            player.showStatus();
+            pemain.showStatus();
             liveCoding.showStatus();
             System.out.println("1. Ngoding brutal (serang)");
             System.out.println("2. Sedot Es Teh Jumbo (+10 Mental)");
@@ -231,9 +231,9 @@ public class Game {
             input = scanner.nextLine().trim();
 
             if (input.equals("1")) {
-                player.attack(liveCoding);
+                pemain.attack(liveCoding);
             } else if (input.equals("2")) {
-                if (!player.drinkPotion()) {
+                if (!pemain.drinkPotion()) {
                     System.out.println("Es Teh abis, bestie! Pilih aksi lain.");
                     continue;
                 }
@@ -243,12 +243,12 @@ public class Game {
             }
 
             if (liveCoding.isAlive()) {
-                liveCoding.attack(player);
+                liveCoding.attack(pemain);
             }
         }
 
-        if (!player.isAlive()) {
-            System.out.println(gameOverText);
+        if (!pemain.isAlive()) {
+            System.out.println(textGameOver);
             scanner.close();
             return;
         }

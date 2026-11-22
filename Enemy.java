@@ -1,5 +1,4 @@
 public class Enemy {
-    // Atribut (private = enkapsulasi)
     private String name;
     private int hp;
     private int maxHp;
@@ -15,7 +14,7 @@ public class Enemy {
         this.goldReward = goldReward;
     }
 
-    // ===== Getter =====
+    // getter
     public String getName() {
         return name;
     }
@@ -28,15 +27,12 @@ public class Enemy {
         return goldReward;
     }
 
-    // ===== Aksi =====
-
-    // Menyerang player
+    // sistem kombat
     public void attack(Player player) {
-        System.out.println(name + " nyerang mental " + player.getName() + "! Mental -" + attackPower + ".");
+        System.out.println(name + " nyerang mental " + player.getName() + "! Mental -" + attackPower);
         player.takeDamage(attackPower);
     }
 
-    // Menerima damage, HP tidak boleh di bawah 0
     public void takeDamage(int damage) {
         hp = hp - damage;
         if (hp < 0) {
@@ -49,6 +45,6 @@ public class Enemy {
     }
 
     public void showStatus() {
-        System.out.println("[" + name + "] Progress belum kelar: " + hp + "/" + maxHp);
+        System.out.println("[" + name + "] belum kelar: " + hp + "/" + maxHp);
     }
 }

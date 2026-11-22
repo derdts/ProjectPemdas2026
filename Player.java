@@ -34,30 +34,30 @@ public class Player {
         return gold;
     }
 
-    // ===== Aksi kombat =====
-
-    // Menyerang musuh
+    // sistem kombat
     public void attack(Enemy enemy) {
-        System.out.println(name + " ngoding brutal! " + enemy.getName() + " kena " + attackPower + " damage!");
+        System.out.println(name + "nyerang" + enemy.getName() + " dan nge damage " + attackPower);
         enemy.takeDamage(attackPower);
     }
 
-    // Minum ramuan: pulihkan 10 HP, tidak boleh melebihi max HP
-    // Mengembalikan false jika ramuan sudah habis
     public boolean drinkPotion() {
+
         if (potions <= 0) {
             return false;
         }
-        potions = potions - 1;
+
+        potions -= 1;
+
         hp = hp + 10;
+
         if (hp > maxHp) {
             hp = maxHp;
         }
-        System.out.println(name + " nyedot Es Teh Jumbo. Seger parah! Mental sekarang " + hp + ".");
+
+        System.out.println(name + " minum Es Teh Jumbo. 'jos jis', Mental sekarang " + hp);
         return true;
     }
 
-    // Menerima damage, HP tidak boleh di bawah 0
     public void takeDamage(int damage) {
         hp = hp - damage;
         if (hp < 0) {
@@ -69,32 +69,28 @@ public class Player {
         return hp > 0;
     }
 
-    // ===== Gold dan item =====
-
     public void addGold(int amount) {
-        if (amount > 0) {
-            gold = gold + amount;
-        }
+        gold += amount;
     }
 
-    // Membeli item: gold dikurangi, lalu bonus item langsung diterapkan
-    // Mengembalikan false jika gold tidak cukup
     public boolean buyItem(Item item) {
+
         if (gold < item.getPrice()) {
             return false;
         }
-        gold = gold - item.getPrice();
+
+        gold -= item.getPrice();
         attackPower = attackPower + item.getAttackBonus();
-        maxHp = maxHp + item.getHpBonus();
-        hp = hp + item.getHpBonus();
-        potions = potions + item.getPotionBonus();
+        maxHp += item.getHpBonus();
+        hp += item.getHpBonus();
+        potions += item.getPotionBonus();
         return true;
     }
 
     public void showStatus() {
         System.out.println("[" + name + "] Mental: " + hp + "/" + maxHp
-                + " | Skill Ngoding: " + attackPower
-                + " | Es Teh: " + potions
-                + " | Saldo: " + gold);
+                + " | Skill: " + attackPower
+                + " | Es Teh Jumbo: " + potions
+                + " | Saldo Qris: " + gold);
     }
 }
