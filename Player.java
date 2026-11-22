@@ -40,7 +40,7 @@ public class Player {
 
     // sistem kombat
     public void attack(Enemy enemy) {
-        System.out.println(name + "nyerang" + enemy.getName() + " dan nge damage " + attackPower);
+        System.out.println(name + " nyerang" + enemy.getName() + " dan nge damage " + attackPower);
         enemy.takeDamage(attackPower);
     }
 
