@@ -5,7 +5,6 @@ public class Enemy {
     private int attackPower;
     private int goldReward;
 
-    // Constructor
     public Enemy(String name, int maxHp, int attackPower, int goldReward) {
         this.name = name;
         this.maxHp = maxHp;
@@ -14,7 +13,6 @@ public class Enemy {
         this.goldReward = goldReward;
     }
 
-    // getter
     public String getName() {
         return name;
     }
@@ -27,7 +25,6 @@ public class Enemy {
         return goldReward;
     }
 
-    // sistem kombat
     public void attack(Player player) {
         System.out.println(name + " nyerang mental " + player.getName() + "! Mental -" + attackPower);
         player.takeDamage(attackPower);

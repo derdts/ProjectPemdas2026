@@ -1,5 +1,4 @@
 public class Player {
-    // Atribut (private = enkapsulasi)
     private String name;
     private int hp;
     private int maxHp;
@@ -7,7 +6,6 @@ public class Player {
     private int potions;
     private int gold;
 
-    // Constructor
     public Player(String name, int maxHp, int attackPower, int potions) {
         this.name = name;
         this.maxHp = maxHp;
@@ -17,7 +15,6 @@ public class Player {
         this.gold = 0;
     }
 
-    // ===== Getter =====
     public String getName() {
         return name;
     }
@@ -34,7 +31,6 @@ public class Player {
         return gold;
     }
 
-    // sistem kombat
     public void attack(Enemy enemy) {
         System.out.println(name + "nyerang" + enemy.getName() + " dan nge damage " + attackPower);
         enemy.takeDamage(attackPower);

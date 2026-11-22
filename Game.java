@@ -6,25 +6,21 @@ public class Game {
         String input;
         boolean shopping;
 
-        // bikin player
         System.out.println("Tahun ini kamu udah jadi mahasiswa baru");
         System.out.print("Siapa nama mu??? ");
         String nama = scanner.nextLine();
         Player pemain = new Player(nama, 30, 5, 2);
 
-        // bikin musuh
         Enemy tugasOspek = new Enemy("Tugas Ospek", 10, 3, 20);
         Enemy laporanPraktikum = new Enemy("Live Koding Looping", 15, 4, 30);
         Enemy liveCoding = new Enemy("U A P😈", 30, 6, 0);
 
-        // bikin item
         Item[] shopItems = {
             new Item("Americano", 25, 3, 0, 0, "+3 Skill Ngoding"),
             new Item("Nasi Padang", 20, 0, 10, 0, "+10 max Mental"),
             new Item("Es Teh Jumbo", 10, 0, 0, 1, "+1 Es Teh Jumbo")
         };
 
-        // text kalo kalah
         String textGameOver = "\nMental kamu habis. Kamu ketiduran di depan laptop dan kebangun jam 00.01.\n"
                 + "Deadline lewat. Tombol submit udah abu-abu.\n"
                 + "===== STATUS: SKILL ISSUE Wlee =====\n"
@@ -127,9 +123,6 @@ public class Game {
             }
         }
 
-        // =====================================================
-        // BAGIAN 2: LAPORAN PRAKTIKUM
-        // =====================================================
         System.out.println("\nOspek kelar, kuliah dimulai. Grup kelas langsung bunyi:");
         System.out.println("\"GUYS LAPORAN PRAKTIKUM DIKUMPUL MALEM INI JAM 23.59, NO TOLERANSI\"");
         System.out.println("Laptop dibuka. Word masih kosong. Kursornya kedip-kedip kayak lagi ngeledek.");
@@ -211,9 +204,6 @@ public class Game {
             }
         }
 
-        // =====================================================
-        // BAGIAN 3: BOSS - LIVE CODING PRAKTIKUM
-        // =====================================================
         System.out.println("\nBesoknya praktikum. Asprak masuk, senyum tipis, terus bilang:");
         System.out.println("\"Oke adik-adik, hari ini live coding ya. Ga boleh buka Google, ga boleh buka AI.\"");
         System.out.println("Satu lab langsung hening. Ada yang pura-pura ke toilet.");
@@ -253,9 +243,6 @@ public class Game {
             return;
         }
 
-        // =====================================================
-        // ENDING CHAPTER 1
-        // =====================================================
         System.out.println("\nLive Coding Praktikum KELAR!");
         System.out.println("Program kamu akhirnya jalan. Output-nya persis kayak soal.");
         System.out.println("Asprak ngangguk: \"Oke, aman.\"");
