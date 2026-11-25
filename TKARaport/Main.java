@@ -6,18 +6,23 @@ public class Main {
         double[] rapor = new double[5];
         double[] ratio = new double[5];
         double jumlahTKA = 0;
+        String[] sekolah = {"SMAN 1 Jember", 
+        "SMAN 2 Jember",
+        "SMAN 3 Jember",
+        "SMAN 4 Jember",
+        "SMAN 5 Jember"};
     
       System.out.println("Kepo, sekolah ini nilainya mencurigakan atau tidak??");
       System.out.println("List sekolah di Jember");
-      System.out.println("1. SMAN 1 Jember");
-      System.out.println("2. SMAN 2 Jember");
-      System.out.println("3. SMAN 3 Jember");
-      System.out.println("4. SMAN 4 Jember");
-      System.out.println("5. SMAN 5 Jember\n");
-      
+      System.out.println("1. " + sekolah[0]);
+      System.out.println("2. " + sekolah[1]);
+      System.out.println("3. " + sekolah[2]);
+      System.out.println("4. " + sekolah[3]);
+      System.out.println("5. " + sekolah[4] + "\n");
+
       int i = 0;
       while (i < 5) { 
-          System.out.println("\nNilai SMAN " + (i+1) + " Jember");
+          System.out.println("\nNilai " + sekolah[i]);
           System.out.print("Masukkan nilai rata - rata TKA Siswa: ");
           tka[i] = in.nextDouble();
           jumlahTKA += tka[i];
@@ -42,9 +47,7 @@ public class Main {
       
       String kategori = " ";
       for(i=0; i<5; i++){
-        ratio[i] = tka[i] / rapor[i];
-        if(ratio[i]>=1){
-          if(tka[i]>rataTKA){
+        if(tka[i]>rataTKA){
             kategori="Diatas Rata-rata";
           }
           else if (tka[i]<rataTKA){
@@ -53,15 +56,15 @@ public class Main {
           else{
             kategori="Rata-rata";
           }
-          System.out.println("SMAN " + (i+1) + " Jember TKA: " + tka[i] + ", Kategori: " + kategori + ", Rapor: " + rapor[i] + ", Status: Tidak mencurigakan");
+        ratio[i] = tka[i] / rapor[i];
+        if(ratio[i]>=1){
+          System.out.println(sekolah[i] + " TKA: " + tka[i] + ", Kategori: " + kategori + ", Rapor: " + rapor[i] + ", Status: Tidak mencurigakan");
         }
         else if (ratio[i] < 1 && ratio[i]>= 0.9){
-          System.out.println("SMAN " + (i+1) + " Jember TKA: " + tka[i] + ", Kategori: " + kategori + ", Rapor: " + rapor[i] + ", Status: Cukup mencurigakan");
+          System.out.println(sekolah[i] + " TKA: " + tka[i] + ", Kategori: " + kategori + ", Rapor: " + rapor[i] + ", Status: Cukup mencurigakan");
         } else {
-            System.out.println("SMAN " + (i+1) + " Jember TKA: " + tka[i] + ", Kategori: " + kategori + ", Rapor: " + rapor[i] + ", Status: Mencurigakan");
+            System.out.println(sekolah[i] + " TKA: " + tka[i] + ", Kategori: " + kategori + ", Rapor: " + rapor[i] + ", Status: Mencurigakan");
         }
       }   
-      
-
     }
 }
