@@ -32,9 +32,7 @@ public class Main {
             if (rapor[i] > 100 || rapor[i] < 0) {
                 System.out.println("nilai Rapor tidak boleh lebih dari 100 atau kurang dari 0");
                 continue;
-            } else if (rapor[i] == 0) {
-                rapor[i] = 1;
-            }
+            } 
             i++;
         }
     }
@@ -62,6 +60,8 @@ public class Main {
             return "Tidak mencurigakan";
         } else if (ratio >= 0.9) {
             return "Cukup mencurigakan";
+        } else if (ratio == 0){
+            return "nilai rapor = 0 atau tka = 0";
         } else {
             return "Mencurigakan";
         }
@@ -72,6 +72,10 @@ public class Main {
 
         for (int i = 0; i < sekolah.length; i++) {
             double ratio = tka[i] / rapor[i];
+            if(rapor[i] == 0){
+                ratio = 0;
+            }
+
             String kategori = tentukanKategori(tka[i], rataTKA);
             String status = tentukanStatus(ratio);
 
@@ -85,7 +89,6 @@ public class Main {
     }
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        double jumlahTKA = 0;
         
       tampilkanAwal();
       System.out.print("Masukkan berapa list sekolah yang ingin di cek: ");
@@ -100,7 +103,6 @@ public class Main {
       String[] sekolah = new String[n];
       double[] tka = new double[n];
       double[] rapor = new double[n];
-      double[] ratio = new double[n];
 
       inputNamaSekolah(in, sekolah);
       inputNilai(in, sekolah, tka, rapor);
