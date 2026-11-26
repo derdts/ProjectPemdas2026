@@ -10,6 +10,12 @@ public class Main {
       System.out.print("Masukkan berapa list sekolah yang ingin di cek: ");
       int n = in.nextInt();
       in.nextLine();
+
+      if(n<1){
+        System.out.println("Jumlah sekolah tidak boleh kurang dari 1");
+        return;
+      }
+
       String[] sekolah = new String[n];
       double[] tka = new double[n];
       double[] rapor = new double[n];
