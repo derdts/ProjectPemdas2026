@@ -27,8 +27,7 @@ public class Main {
           System.out.println("\nNilai " + sekolah[i]);
           System.out.print("Masukkan nilai rata - rata TKA Siswa: ");
           tka[i] = in.nextDouble();
-          jumlahTKA += tka[i];
-
+          
           if(tka[i]>100 || tka[i]<0){
             System.out.println("nilai TKA tidak boleh lebih dari 100 atau kurang dari 0");
             continue;
@@ -42,6 +41,7 @@ public class Main {
           } else if (rapor[i]==0){
             rapor[i]=1;
           }
+          jumlahTKA += tka[i];
           i++;
       }
 
