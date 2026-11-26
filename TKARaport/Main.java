@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void tampilkanIntro() {
+    public static void tampilkanAwal() {
         System.out.println("Cek Rapor dan TKA Siswa SMA di Kabupaten Jember");
         System.out.println("Kepo, sekolah ini nilainya mencurigakan atau tidak??");
     }
@@ -33,7 +33,7 @@ public class Main {
                 System.out.println("nilai Rapor tidak boleh lebih dari 100 atau kurang dari 0");
                 continue;
             } else if (rapor[i] == 0) {
-                rapor[i] = 1; // Mencegah pembagian dengan nol
+                rapor[i] = 1;
             }
             i++;
         }
@@ -87,7 +87,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         double jumlahTKA = 0;
         
-      tampilkanIntro();
+      tampilkanAwal();
       System.out.print("Masukkan berapa list sekolah yang ingin di cek: ");
       int n = in.nextInt();
       in.nextLine();
