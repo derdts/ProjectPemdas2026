@@ -39,7 +39,7 @@ public class Main {
           if(rapor[i]>100 || rapor[i]<0){
             System.out.println("nilai Rapor tidak boleh lebih dari 100 atau kurang dari 0");
             continue;
-          } else if (rapor[i]=0){
+          } else if (rapor[i]==0){
             rapor[i]=1;
           }
           i++;
